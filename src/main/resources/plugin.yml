@@ -1,0 +1,8 @@
+name: Api-danielo535
+version: '${project.version}'
+main: pl.danielo535.api_danielo535.Api_danielo535
+api-version: '1.13'
+softdepend:
+  - DecentHolograms
+  - WorldGuard
+  - FastAsyncWorldEdit
