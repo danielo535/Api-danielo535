@@ -88,6 +88,11 @@ SchematicManager.pasteSchematic("NameSchematic",location,directory);
 ****
 Example:
 ```java
+@Override
+public void onEnable() {
+    getServer().getPluginManager().registerEvents(new PlayerRegionListener(), this);
+}
+
 @EventHandler
 public void onEnterRegion(PlayerJoinRegionEvent event) {
     Player player = event.getPlayer();
