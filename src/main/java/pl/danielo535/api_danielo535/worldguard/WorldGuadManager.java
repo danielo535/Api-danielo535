@@ -24,7 +24,7 @@ public class WorldGuadManager {
      * @param obj The object for which a list of regions should be retrieved.
      * @return A list of region IDs that the object belongs to.
      */
-    public List<String> getObjectRegions(Object obj) {
+    private static List<String> getObjectRegions(Object obj) {
         RegionContainer container = com.sk89q.worldguard.WorldGuard.getInstance().getPlatform().getRegionContainer();
         RegionQuery query = container.createQuery();
 
@@ -48,7 +48,7 @@ public class WorldGuadManager {
      * @param player The player for whom a list of regions should be retrieved.
      * @return A list of region IDs that the player belongs to.
      */
-    public List<String> getPlayerRegions(Player player) {
+    public static List<String> getPlayerRegions(Player player) {
         return getObjectRegions(player);
     }
 
@@ -58,7 +58,7 @@ public class WorldGuadManager {
      * @param entity The Entity object for which a list of regions should be retrieved.
      * @return A list of region IDs that the Entity object belongs to.
      */
-    public List<String> getEntityRegions(Entity entity) {
+    public static List<String> getEntityRegions(Entity entity) {
         return getObjectRegions(entity);
     }
 
@@ -68,7 +68,7 @@ public class WorldGuadManager {
      * @param block The block for which a list of regions should be retrieved.
      * @return A list of region IDs that the block belongs to.
      */
-    public List<String> getBlockRegions(Block block) {
+    public static List<String> getBlockRegions(Block block) {
         return getObjectRegions(block);
     }
 
@@ -79,7 +79,7 @@ public class WorldGuadManager {
      * @param region The ID of the region to check.
      * @return True if the player is in the specified region; otherwise, false.
      */
-    public boolean isPlayerInRegion(Player player, String region) {
+    public static boolean isPlayerInRegion(Player player, String region) {
         List<String> regions = getPlayerRegions(player);
         return regions.contains(region);
     }
@@ -91,7 +91,7 @@ public class WorldGuadManager {
      * @param region The ID of the region to check.
      * @return True if the Entity object is in the specified region; otherwise, false.
      */
-    public boolean isEntityInRegion(Entity entity, String region) {
+    public static boolean isEntityInRegion(Entity entity, String region) {
         List<String> regions = getEntityRegions(entity);
         return regions.contains(region);
     }
@@ -103,7 +103,7 @@ public class WorldGuadManager {
      * @param region The ID of the region to check.
      * @return True if the block is in the specified region; otherwise, false.
      */
-    public boolean isBlockInRegion(Block block, String region) {
+    public static boolean isBlockInRegion(Block block, String region) {
         List<String> regions = getBlockRegions(block);
         return regions.contains(region);
     }
@@ -115,7 +115,7 @@ public class WorldGuadManager {
      * @param regions The list of region IDs to check.
      * @return True if the player is in at least one of the regions from the list; otherwise, false.
      */
-    public boolean isPlayerInRegionList(Player player, List<String> regions) {
+    public static boolean isPlayerInRegionList(Player player, List<String> regions) {
         List<String> playerRegions = getPlayerRegions(player);
         return playerRegions.stream().anyMatch(regions::contains);
     }
@@ -127,7 +127,7 @@ public class WorldGuadManager {
      * @param regions The list of region IDs to check.
      * @return True if the Entity object is in at least one of the regions from the list; otherwise, false.
      */
-    public boolean isEntityInRegionList(Entity entity, List<String> regions) {
+    public static boolean isEntityInRegionList(Entity entity, List<String> regions) {
         List<String> entityRegions = getEntityRegions(entity);
         return entityRegions.stream().anyMatch(regions::contains);
     }
@@ -139,7 +139,7 @@ public class WorldGuadManager {
      * @param regions The list of region IDs to check.
      * @return True if the block is in at least one of the regions from the list; otherwise, false.
      */
-    public boolean isBlockInRegionList(Block block, List<String> regions) {
+    public static boolean isBlockInRegionList(Block block, List<String> regions) {
         List<String> blockRegions = getBlockRegions(block);
         return blockRegions.stream().anyMatch(regions::contains);
     }
